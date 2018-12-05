@@ -21,3 +21,14 @@
     ![Virtual Disk List](https://github.com/0verseas/runtime-builder/blob/master/images/VDs.png)
     ![VD_HDD config](https://github.com/0verseas/runtime-builder/blob/master/images/VD_HDD_config.jpg)
     ![VD_SSD config](https://github.com/0verseas/runtime-builder/blob/master/images/VD_SSD_config.jpg)
+    
+## OS Installation Hint
+1. Set language to `English` to avoid font issues
+2. Set Location to `Asia/Taiwan`
+3. Set Locale to `en_US.UTF-8`
+4. Set keyboard to `English (US)`
+    ![language setting gif](https://github.com/0verseas/runtime-builder/blob/master/images/system-install-choose-language.gif)
+
+5. Check timezone is `Asis/Taipei`
+6. system install on disk `VD_HDD`
+7. Install OpenSSH Server in predefined software

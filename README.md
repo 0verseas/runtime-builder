@@ -32,3 +32,4 @@
 5. Check timezone is `Asis/Taipei`
 6. system install on disk `VD_HDD`
 7. Install OpenSSH Server in predefined software
+    ![install predefined software](https://github.com/0verseas/runtime-builder/blob/master/images/system-install-predefined-software.png)

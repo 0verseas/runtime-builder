@@ -11,6 +11,7 @@
     5. ghostscript
     6. fail2ban
     7. portsentry
+    8. supervisor
     8. rsync
     9. docker
     
@@ -37,9 +38,13 @@
     ![install predefined software](https://github.com/0verseas/runtime-builder/blob/master/images/system-install-predefined-software.png)
 
 ## Software Configuration
-### Nginx
+### Nginx + Certbot
+![SSL Configuration Generator by Mozilla](https://mozilla.github.io/server-side-tls/ssl-config-generator/)(modern profile is recommended)
 
 ### PHP
+
+### Supervisor
+Install for ![Laravel Queue Worker](https://laravel.com/docs/5.7/queues#supervisor-configuration)
 
 ### Database
 1. MariaDB Audit plugin  

@@ -36,7 +36,7 @@
 7. Install OpenSSH Server in predefined software
     ![install predefined software](https://github.com/0verseas/runtime-builder/blob/master/images/system-install-predefined-software.png)
 
-## Tunning
+## Software Configuration
 ### Nginx
 
 ### PHP

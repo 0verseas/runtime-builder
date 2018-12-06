@@ -39,7 +39,16 @@
 
 ## Software Configuration
 ### Nginx + Certbot
-[SSL Configuration Generator by Mozilla](https://mozilla.github.io/server-side-tls/ssl-config-generator/)(modern profile is recommended)
+* certbot:  
+    1. Get certificates use [webroot](https://certbot.eff.org/docs/using.html#webroot)  
+    2. Add config below to `/etc/crontab`  
+        ```
+        30 2 * * 1 root /usr/bin/certbot renew
+        35 2 * * 1 root /etc/init.d/nginx reload
+        ```
+
+* Nginx:  
+    [SSL Configuration Generator by Mozilla](https://mozilla.github.io/server-side-tls/ssl-config-generator/) (modern profile is recommended)
 
 ### PHP
 

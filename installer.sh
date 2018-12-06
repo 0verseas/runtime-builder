@@ -32,3 +32,21 @@ sudo chmod +x $HOME/bin/composer
 
 # install mariadb
 sudo apt install -y mariadb-server
+
+# install ghostscript
+sudo apt install -y  ghostscript
+
+# install fail2ban
+sudo apt install -y fail2ban
+
+# install portsentry
+sudo apt install -y portsentry
+
+# install supervisor
+sudo apt install -y supervisor
+
+# install rsync
+sudo apt install -y rsync
+
+# install git
+sudo apt install -y git

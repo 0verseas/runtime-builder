@@ -39,12 +39,12 @@
 
 ## Software Configuration
 ### Nginx + Certbot
-![SSL Configuration Generator by Mozilla](https://mozilla.github.io/server-side-tls/ssl-config-generator/)(modern profile is recommended)
+[SSL Configuration Generator by Mozilla](https://mozilla.github.io/server-side-tls/ssl-config-generator/)(modern profile is recommended)
 
 ### PHP
 
 ### Supervisor
-Install for ![Laravel Queue Worker](https://laravel.com/docs/5.7/queues#supervisor-configuration)
+Install for [Laravel Queue Worker](https://laravel.com/docs/5.7/queues#supervisor-configuration)
 
 ### Database
 1. MariaDB Audit plugin  

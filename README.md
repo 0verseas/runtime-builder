@@ -39,7 +39,7 @@
 
 ## Software Configuration
 ### Nginx + Certbot
-* certbot:  
+* certbot:
     1. Get certificates use [webroot](https://certbot.eff.org/docs/using.html#webroot)  
     2. Add config below to `/etc/crontab`  
         ```

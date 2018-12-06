@@ -11,6 +11,8 @@
     5. ghostscript
     6. fail2ban
     7. portsentry
+    8. rsync
+    9. docker
     
 ## Hardware Configuration
 1. Storage:

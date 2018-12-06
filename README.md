@@ -113,3 +113,6 @@ add below to `/etc/crontab`
 ```
 */5 * * * * root rsync --archive --delete --delete-delay --delay-updates /mnt/VD_SSD /data/
 ```
+
+## Example Config Files
+all examples are in config-examples folder

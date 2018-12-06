@@ -41,7 +41,7 @@
 ### Nginx + Certbot
 * certbot:
     1. Get certificates use [webroot](https://certbot.eff.org/docs/using.html#webroot)  
-    2. Add config below to `/etc/crontab`  
+    2. Add config below to `/etc/crontab` for autorenew certificates
         ```
         30 2 * * 1 root /usr/bin/certbot renew
         35 2 * * 1 root /etc/init.d/nginx reload

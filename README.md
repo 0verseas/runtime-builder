@@ -83,3 +83,22 @@
         mysql            hard    nofile          65535
         ```
 3. automysqlbackup
+
+
+### fail2ban
+
+### portsentry
+
+### docker
+
+### Disk Mount
+0. make sure VD_SSD is formatted in ext4 disk format
+1. `sudo fdisk -l` check what device path is for VD_SSD
+2. `blkid (VD_SSD's device path with partition number)` to get UUID of VD_SSD's partition
+3. add `UUID=(UUID get from previous step) /mnt/VD_SSD     ext4    errors=remount-ro 0       1` to `/etc/fstab`
+
+### rsync (SSD -> HDD)
+add below to `/etc/crontab`  
+```
+*/5 * * * * root rsync --archive --delete --delete-delay --delay-updates /mnt/VD_SSD /data/
+```

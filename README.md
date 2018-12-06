@@ -37,6 +37,10 @@
     ![install predefined software](https://github.com/0verseas/runtime-builder/blob/master/images/system-install-predefined-software.png)
 
 ## Tunning
+### Nginx
+
+### PHP
+
 ### Database
 1. MariaDB Audit plugin  
     add config below to `/etc/mysql/mariadb.conf.d/50-server.cnf`  
@@ -85,7 +89,6 @@
         mysql            hard    nofile          65535
         ```
 3. automysqlbackup
-
 
 ### fail2ban
 

@@ -17,7 +17,7 @@
     1. physical: HDD * 8, SSD * 2  
     ![Physical Disk List](https://github.com/0verseas/runtime-builder/blob/master/images/PDs.png)
     
-    2. virtual (RAID): VD_HDD, VD_SSD  
+    2. virtual (RAID): VD_HDD(HDD * 8), VD_SSD(SSD * 2)  
     ![Virtual Disk List](https://github.com/0verseas/runtime-builder/blob/master/images/VDs.png)
     ![VD_HDD config](https://github.com/0verseas/runtime-builder/blob/master/images/VD_HDD_config.jpg)
     ![VD_SSD config](https://github.com/0verseas/runtime-builder/blob/master/images/VD_SSD_config.jpg)
@@ -33,3 +33,53 @@
 6. system install on disk `VD_HDD`
 7. Install OpenSSH Server in predefined software
     ![install predefined software](https://github.com/0verseas/runtime-builder/blob/master/images/system-install-predefined-software.png)
+
+## Tunning
+### Database
+1. MariaDB Audit plugin  
+    add config below to `/etc/mysql/mariadb.conf.d/50-server.cnf`  
+    ``` config
+    # for server / query audit
+    plugin_load=server_audit=server_audit.so
+    
+    #
+    # * MariaDB Audit Plugin
+    #
+    # https://mariadb.com/kb/en/library/mariadb-audit-plugin-log-settings/
+    #
+    # for server / query audit
+
+    server_audit_logging=on
+
+    # to log all queries, or to log only connect and table changes?
+    # https://mariadb.com/kb/en/library/mariadb-audit-plugin-log-settings/#logging-query-events
+    server_audit_events=CONNECT,QUERY,TABLE
+
+    server_audit_file_path=/var/log/mysql/server_audit.log
+
+    # log file size 1G=1000000000
+    # now set to 100M
+    server_audit_file_rotate_size=100000000
+
+    # set to 0 means never rotate (0-999)
+    # now set 999, size will be 100M*999=100G
+    server_audit_file_rotations=999
+
+    # set max logging query length to 10M per query
+    server_audit_query_log_limit=10485760
+    ```
+2. fd limit(open files limit)  
+    1. add config below to `/etc/mysql/mariadb.conf.d/50-server.cnf`  
+        ```config
+        #
+        # Open File Limit
+        #
+        open_files_limit = 65535
+        ```
+    
+    2. add config below to `/etc/security/limits.conf`  
+        ```config
+        mysql            soft    nofile          65535
+        mysql            hard    nofile          65535
+        ```
+3. automysqlbackup

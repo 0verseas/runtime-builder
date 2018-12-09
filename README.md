@@ -39,16 +39,19 @@
 
 ## Software Configuration
 ### Nginx + Certbot
-* certbot:
-    1. Get certificates use [webroot](https://certbot.eff.org/docs/using.html#webroot)  
-    2. Add config below to `/etc/crontab` for autorenew certificates
-        ```
-        30 2 * * 1 root /usr/bin/certbot renew
-        35 2 * * 1 root /etc/init.d/nginx reload
-        ```
+1. The traditional way
+    * certbot:
+        - Get certificates use [webroot](https://certbot.eff.org/docs/using.html#webroot)
+    * Nginx:  
+        [SSL Configuration Generator by Mozilla](https://mozilla.github.io/server-side-tls/ssl-config-generator/) (modern profile is recommended)
+2. The modern way
+    - https://certbot.eff.org/lets-encrypt/ubuntuxenial-nginx.html
+3. Add config below to `/etc/crontab` for autorenew certificates
 
-* Nginx:  
-    [SSL Configuration Generator by Mozilla](https://mozilla.github.io/server-side-tls/ssl-config-generator/) (modern profile is recommended)
+    ```
+    30 2 * * 1 root /usr/bin/certbot renew
+    35 2 * * 1 root /etc/init.d/nginx reload
+    ```
 
 ### PHP
 
@@ -103,10 +106,29 @@ Install for [Laravel Queue Worker](https://laravel.com/docs/5.7/queues#superviso
         mysql            hard    nofile          65535
         ```
 3. automysqlbackup
+    1. `apt install automysqlbackup`
+    2. Review settings in `/etc/default/automysqlbackup`.
+        - `DBNAMES`
+        - `BACKUPDIR`
+        - `MDBNAMES`
+        - `DBEXCLUDE`
 
 ### fail2ban
+- `apt install fail2ban`
+- it's ok to use default settings
 
 ### portsentry
+1. `apt install portsentry`
+2. Review settings in `/etc/portsentry/portsentry.conf`
+    - `TCP_PORTS` / `UDP_PORTS`
+    - `ADVANCED_EXCLUDE_TCP` / `ADVANCED_EXCLUDE_UDP`
+3. Make sure settings below are enabled
+    - `BLOCK_UDP="1"` / `BLOCK_TCP="1"`
+    - `SCAN_TRIGGER="1"` to reduce false alarm
+4. Use better `KILL_ROUTE`. Find this line and enable to use iptables setting instead of default rule
+    ```
+    KILL_ROUTE="/sbin/iptables -I INPUT -s $TARGET$ -j DROP && /sbin/iptables -I INPUT -s $TARGET$ -m limit --limit 3/minute --limit-burst 5 -j LOG --log-level DEBUG --log-prefix 'Portsentry: dropping: '"
+    ```
 
 ### docker
 

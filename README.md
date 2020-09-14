@@ -14,6 +14,7 @@
     8. supervisor
     8. rsync
     9. docker
+    10. ufw
     
 ## Hardware Configuration
 1. Storage:
@@ -144,6 +145,12 @@ add below to `/etc/crontab`
 ```
 */5 * * * * root rsync --archive --delete --delete-delay --delay-updates /mnt/VD_SSD /data/
 ```
+
+### ufw (Uncomplicated Firewall)
+0. Ubuntu has built-in ufw. You can use `sudo ufw status` to check status and rule of ufw.
+1. To make sure your connection after enabling ufw, **`sudo ufw allow ssh`** is necessary.
+2. `sudo ufw allow 80`, `sudo ufw allow 443` and any rule you need.
+3. If setting is ready, you can type in `sudo ufw enable`.
 
 ## Example Config Files
 all examples are in config-examples folder
